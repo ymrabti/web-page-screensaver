@@ -2,7 +2,7 @@
 
 Display webpages as your screensaver.
 
-Inspired by its predecesor [cwc/web-page-screensaver](https://github.com/cwc/web-page-screensaver) (_Achived_).
+Inspired by its predecesor [ymrabti/web-page-screensaver](https://github.com/ymrabti/web-page-screensaver) (_Achived_).
 
 ## Binaries
 

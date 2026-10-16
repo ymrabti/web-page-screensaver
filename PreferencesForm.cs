@@ -8,7 +8,7 @@ namespace WebPageScreensaver
 {
     internal partial class PreferencesForm : Form
     {
-        private const string Webpage = "http://github.com/carlossanlop/web-page-screensaver/";
+        private const string Webpage = "http://github.com/ymrabti/web-page-screensaver/";
 
         public PreferencesForm()
         {

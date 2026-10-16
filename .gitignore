@@ -1,6 +1,67 @@
-**/.vs/
-**/.vscode/
+# .NET
+# Ignore Visual Studio files
+*.suo
+*.user
+*.userosscfg
+*.sln.docstates
+
+# Ignore build output
 **/bin/
 **/obj/
-**/Properties/*
-**/*.user
+
+# Ignore NuGet packages
+**/packages/
+
+# Ignore .NET SDK files
+# This is a broad rule, consider being more specific if needed
+**/obj/project.assets.json
+**/obj/project.nuget.g.props
+**/obj/project.nuget.g.targets
+**/obj/*.nuget.g.props
+**/obj/*.nuget.g.targets
+
+# Ignore publish output
+**/Publish/
+
+# Ignore test results
+**/TestResults/
+
+# Ignore user-specific settings
+*.vspscc
+*.vssscc
+
+# Ignore Rider files
+.idea/
+
+# Ignore VS Code files
+.vscode/
+
+# Ignore global.json if it's not intended to be committed
+# global.json
+
+# Ignore specific files that might be generated
+*.userosscfg
+*.sln.docstates
+*.csproj.user
+*.vbproj.user
+
+# Ignore temporary files
+*.tmp
+*.temp
+.vs
+# Ignore logs
+*.log
+
+# Ignore specific OS files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Ignore build artifacts for specific platforms if not needed
+# e.g., for Windows-specific builds
+# **/bin/x64/
+# **/bin/x86/
+
+# Ignore specific publish profiles if they are generated or sensitive
+# PublishX64.pubxml
+# PublishX86.pubxml
