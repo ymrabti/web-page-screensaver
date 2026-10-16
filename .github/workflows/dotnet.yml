@@ -52,7 +52,7 @@ jobs:
       contents: write
 
     steps:
-    - name: Download screensaver artifacts
+    - name: Download screen-saver artifacts
       uses: actions/download-artifact@v8
       with:
         path: dist
