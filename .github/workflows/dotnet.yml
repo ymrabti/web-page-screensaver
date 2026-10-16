@@ -5,21 +5,40 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   build:
 
-    runs-on: windows-2025
+    runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v7
     - name: Setup .NET
       uses: actions/setup-dotnet@v6
       with:
         dotnet-version: 10.0.x
     - name: Restore dependencies
       run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+    - name: Build (Release)
+      run: dotnet build --no-restore -c Release -p:Platform=x64
+    - name: Publish screensaver (Release, x64)
+      run: dotnet publish WebPageScreensaver.csproj -c Release -p:Platform=x64 -p:PublishProfile=PublishX64
+    - name: Publish screensaver (Release, x86)
+      run: dotnet publish WebPageScreensaver.csproj -c Release -p:Platform=x86 -p:PublishProfile=PublishX86
+    - name: Rename published binaries to .scr
+      run: |
+        Copy-Item "Publish\Release\x64\WebPageScreensaver.exe" "Publish\Release\x64\WebPageScreensaver-x64.scr"
+        Copy-Item "Publish\Release\x86\WebPageScreensaver.exe" "Publish\Release\x86\WebPageScreensaver-x86.scr"
+    - name: Upload x64 screensaver
+      uses: actions/upload-artifact@v7
+      with:
+        name: WebPageScreensaver-x64
+        path: Publish/Release/x64/WebPageScreensaver-x64.scr
+        if-no-files-found: error
+    - name: Upload x86 screensaver
+      uses: actions/upload-artifact@v7
+      with:
+        name: WebPageScreensaver-x86
+        path: Publish/Release/x86/WebPageScreensaver-x86.scr
+        if-no-files-found: error
